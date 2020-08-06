@@ -1,5 +1,8 @@
-Hey !! Tanisha this side from MSRIT. LET'S ALL CONNECT.
+# Team 26
 
-hey!! this is Radhika from VNIT
+### The faces behind the team 
+1. Tanisha Sabherwal -  MSRIT, Bangalore 
+2. Radhika Poddar - VNIT, Nagpur
+3. Dipesh Garg - MNIT, Jaipur
+4. Mukung Acharya - NIE, Mysore
 
-Hey this is Dipesh from MNIT. Let's form a whatsapp group and connect over it. Please mail me your mobile no on dipeshgarg423@gmail.com and I'll form the group.
