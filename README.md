@@ -9,5 +9,5 @@ MENTOR -
 - Tanisha Sabherwal -  MSRIT, Bangalore 
 - Radhika Poddar - VNIT, Nagpur
 - Dipesh Garg - MNIT, Jaipur
-- Mukung Acharya - NIE, Mysore
+- Mukund Acharya - NIE, Mysore
 
