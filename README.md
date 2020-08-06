@@ -1,4 +1,4 @@
-# Team 26
+# Team 26 - Team Alfredo
 
 [Action Plan](https://docs.google.com/document/d/1wKX_Vsi_uFet8lxdY611h8jmbvtkdGdM-6FP1x4efB8/edit?usp=sharing)
 
