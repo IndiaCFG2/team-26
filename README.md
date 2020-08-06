@@ -1,6 +1,6 @@
 # Team 26
 
-#### The faces behind the team 
+#### The individuals behind the team 
 
 MENTOR -
 
