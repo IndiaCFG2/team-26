@@ -4,9 +4,8 @@
 
 ## The individuals behind the team 
 
-MENTOR -
-
 - Tanisha Sabherwal -  MSRIT, Bangalore 
+- Akshay Bhansali - MSRIT, Bangalore
 - Radhika Poddar - VNIT, Nagpur
 - Dipesh Garg - MNIT, Jaipur
 - Mukund Acharya - NIE, Mysore
