@@ -19,10 +19,10 @@ export default function MySearchBar(props){
           marginRight: theme.spacing(2),
           marginLeft: 0,
           width: '100%',
-          [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-          },
+        //   [theme.breakpoints.up('sm')]: {
+            // marginLeft: theme.spacing(3),
+            // width: 'auto',
+        //   },
           display:"flex",
           flexDirection:"row",
           marginBottom:'30px'
@@ -41,7 +41,7 @@ export default function MySearchBar(props){
     
     return (
         <div className={classes.search}>  
-        <input className="search-bar" placeholder="Search ID..." value={props.value} onChange={handleChange} style={{padding:"0 15px", fontSize:16}}  id="text"/>
+        <input className="search-bar" placeholder="Search FPO..." value={props.value} onChange={handleChange} style={{padding:"0 15px", fontSize:16}}  id="text"/>
          <div className="search-button">
           <IconButton>
           <SearchIcon style={{fontSize: 37, alignSelf: 'center', color:'#ffffff'}} color="disabled"/>
