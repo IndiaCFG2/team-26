@@ -16,7 +16,7 @@ function App() {
     <Provider store={store}>
     <Router>
       <div className="App">
-        <Navigation/>
+        {/* <Navigation/> */}
         <div className="main">
           <Switch>
             <Route exact path="/" component={Home} />
@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/details/:id" component={FPODetail} />
           </Switch>
         </div>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </Router>
     </Provider>
