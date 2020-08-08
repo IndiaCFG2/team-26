@@ -10,22 +10,32 @@ import "../styles/Market.scss";
 
 function Home({data,status,getFPO}) {
     const [value, setValue] = useState("");
+    const [records,SetRecords] = useState([]);
+    const [fpoData,SetFpoData] = useState([]);
     function handleChange(newValue) {
         setValue(newValue);
-        // setRecords(data.filter(item => item.placeId.includes(newValue)))
+        SetRecords(fpoData.filter(item => item.name.includes(newValue)))
     };
     useEffect(() => {
         console.log(getFPO());
-    }, [])
+    }, []);
+    useEffect(()=>{
+        if(data===records) return;
+        else {
+            console.log(data);
+            SetRecords(data);
+            SetFpoData(data);
+        }
+    },[data]);
     return (
         <div className="container">
             <h1 style={{margin:"20px 0"}}>Market Place</h1>
             <SearchBar value={value} onChange={handleChange}/>
                 {
-                    data.length===0 ? <div>Loading</div> :
-                    (   <>
+                    records.length===0 ? <div>Loading</div> :
+                    (   <div style={{padding:"0 35px"}}>
                             {
-                                data.map( fpo => (
+                                records.map( fpo => (
                                     <Link to="/details">
                                             <div className="fpodesc" style={{backgroundColor: "#EDEDEB", boxShadow: "0px 1px 10px #999", padding:"30px", marginBottom:"30px", borderRadius:"5px", cursor:"pointer", textDecoration:"none"}}>
                                             <div style={{display:"flex", alignItems:"center"}}>
@@ -41,7 +51,7 @@ function Home({data,status,getFPO}) {
                                     </Link>
                                 ))
                             }
-                        </>
+                        </div>
                     ) 
                 }
         </div>
