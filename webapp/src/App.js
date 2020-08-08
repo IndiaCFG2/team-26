@@ -7,7 +7,7 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Community from './pages/Community';
 import Footer from "./components/Footer"
-
+import Marketplace from "./pages/Marketplace"
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/community" component={Community} />
+            <Route exact path="/market" component={Marketplace} />
           </Switch>
         </div>
         <Footer/>
