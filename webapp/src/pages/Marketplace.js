@@ -25,11 +25,16 @@ function Home({data,status,getFPO}) {
                     (   <>
                             {
                                 data.map( fpo => (
-                                    <div style={  {backgroundColor:"#EAEAEA", padding:"10px 20px", marginBottom:"20px", borderRadius:"5px"}}>
-                                        <h3 style={{marginBottom:"2px"}}>{fpo.name}</h3>
-                                        <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
-                                        <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
-                                        <p>{fpo.members} members</p>
+                                    <div style={{backgroundColor: "#EDEDEB", boxShadow: "0px 1px 10px #999", padding:"30px", marginBottom:"30px", borderRadius:"5px", cursor:"pointer"}}>
+                                        <div style={{display:"flex", alignItems:"center"}}>
+                                            <img src={fpo.img} className="fpo-img" style={{height:"150px", borderRadius:"50%", marginRight:"30px"}}/>
+                                            <div>
+                                                <h2 style={{marginBottom:"2px"}}>{fpo.name}</h2>
+                                                <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
+                                                <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
+                                                <p>{fpo.members} members</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))
                             }
