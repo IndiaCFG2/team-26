@@ -23,6 +23,10 @@
   font-weight: 600;
 }
 
+h1{
+  color:$color-blue;
+}
+
 @media only screen and (max-width:900px){
   .container{
     padding: 0% 5% 0;

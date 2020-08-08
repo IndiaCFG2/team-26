@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
+import Community from './pages/Community';
 import Footer from "./components/Footer"
 
 
@@ -18,6 +19,7 @@ function App() {
         <div className="main">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/community" component={Community} />
           </Switch>
         </div>
         <Footer/>
