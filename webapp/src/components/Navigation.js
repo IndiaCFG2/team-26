@@ -15,7 +15,7 @@ export default function Navigation() {
                 </div>
             </div>
             <div>
-                <Link to="/market">Marketplace</Link>
+                <Link to="/">Marketplace</Link>
                 <Link to="/community">Community</Link>
                 <Link to="/login">Login</Link>
             </div>
