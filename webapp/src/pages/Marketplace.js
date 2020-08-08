@@ -1,39 +1,57 @@
 import React,{useEffect,useState} from 'react'
 import {connect} from 'react-redux';
 import {getFPO} from "../redux/actions/fpoAction"
-import "../styles/Community.scss";
 import AddTopic from "../components/addTopic"
 import SearchBar from "../components/SearchBar";
 import Rating from '@material-ui/lab/Rating';
+import {Link} from 'react-router-dom'
+import "../styles/Market.scss";
 
 
 function Home({data,status,getFPO}) {
     const [value, setValue] = useState("");
+    const [records,SetRecords] = useState([]);
+    const [fpoData,SetFpoData] = useState([]);
     function handleChange(newValue) {
         setValue(newValue);
-        // setRecords(data.filter(item => item.placeId.includes(newValue)))
+        SetRecords(fpoData.filter(item => item.name.includes(newValue)))
     };
     useEffect(() => {
         console.log(getFPO());
-    }, [])
+    }, []);
+    useEffect(()=>{
+        if(data===records) return;
+        else {
+            console.log(data);
+            SetRecords(data);
+            SetFpoData(data);
+        }
+    },[data]);
     return (
         <div className="container">
             <h1 style={{margin:"20px 0"}}>Market Place</h1>
             <SearchBar value={value} onChange={handleChange}/>
                 {
-                    data.length===0 ? <div>Loading</div> :
-                    (   <>
+                    records.length===0 ? <div>Loading</div> :
+                    (   <div style={{padding:"0 35px"}}>
                             {
-                                data.map( fpo => (
-                                    <div style={  {backgroundColor:"#EAEAEA", padding:"10px 20px", marginBottom:"20px", borderRadius:"5px"}}>
-                                        <h3 style={{marginBottom:"2px"}}>{fpo.name}</h3>
-                                        <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
-                                        <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
-                                        <p>{fpo.members} members</p>
-                                    </div>
+                                records.map( fpo => (
+                                    <Link to="/details">
+                                            <div className="fpodesc" style={{backgroundColor: "#EDEDEB", boxShadow: "0px 1px 10px #999", padding:"30px", marginBottom:"30px", borderRadius:"5px", cursor:"pointer", textDecoration:"none"}}>
+                                            <div style={{display:"flex", alignItems:"center"}}>
+                                                <img src={fpo.img} className="fpo-img" style={{height:"150px", borderRadius:"50%", marginRight:"30px"}}/>
+                                                <div>
+                                                    <h2 style={{marginBottom:"2px"}}>{fpo.name}</h2>
+                                                    <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
+                                                    <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
+                                                    <p>{fpo.members} members</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 ))
                             }
-                        </>
+                        </div>
                     ) 
                 }
         </div>
