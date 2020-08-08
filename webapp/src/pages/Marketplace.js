@@ -1,10 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import {connect} from 'react-redux';
 import {getFPO} from "../redux/actions/fpoAction"
-import "../styles/Community.scss";
 import AddTopic from "../components/addTopic"
 import SearchBar from "../components/SearchBar";
 import Rating from '@material-ui/lab/Rating';
+import {Link} from 'react-router-dom'
+import "../styles/Market.scss";
 
 
 function Home({data,status,getFPO}) {
@@ -25,17 +26,19 @@ function Home({data,status,getFPO}) {
                     (   <>
                             {
                                 data.map( fpo => (
-                                    <div style={{backgroundColor: "#EDEDEB", boxShadow: "0px 1px 10px #999", padding:"30px", marginBottom:"30px", borderRadius:"5px", cursor:"pointer"}}>
-                                        <div style={{display:"flex", alignItems:"center"}}>
-                                            <img src={fpo.img} className="fpo-img" style={{height:"150px", borderRadius:"50%", marginRight:"30px"}}/>
-                                            <div>
-                                                <h2 style={{marginBottom:"2px"}}>{fpo.name}</h2>
-                                                <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
-                                                <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
-                                                <p>{fpo.members} members</p>
+                                    <Link to="/details">
+                                            <div className="fpodesc" style={{backgroundColor: "#EDEDEB", boxShadow: "0px 1px 10px #999", padding:"30px", marginBottom:"30px", borderRadius:"5px", cursor:"pointer", textDecoration:"none"}}>
+                                            <div style={{display:"flex", alignItems:"center"}}>
+                                                <img src={fpo.img} className="fpo-img" style={{height:"150px", borderRadius:"50%", marginRight:"30px"}}/>
+                                                <div>
+                                                    <h2 style={{marginBottom:"2px"}}>{fpo.name}</h2>
+                                                    <p style={{margin:0, fontSize:"14px"}}>{fpo.Email}</p>
+                                                    <Rating name="read-only" value={fpo.rating} precision={0.25} readOnly/>
+                                                    <p>{fpo.members} members</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))
                             }
                         </>
