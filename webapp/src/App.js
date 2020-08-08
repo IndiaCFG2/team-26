@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/community" component={Community} />
             <Route exact path="/market" component={Marketplace} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/details" component={FPODetail} />
+            <Route exact path="/details/:id" component={FPODetail} />
           </Switch>
         </div>
         <Footer/>
