@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {getSlotTime} from "../redux/actions/slotTimeAction"
 import "../styles/Community.scss";
 import AddTopic from "../components/addTopic"
+import Navigation from '../components/Navigation';
+
 
 function Home({data,status,getSlotTime}) {
     const [tag,setTag]=useState(0);
@@ -33,6 +35,8 @@ function Home({data,status,getSlotTime}) {
         setTopics(prevState=> [...prevState, val]);  
     };
     return (
+        <>
+        <Navigation/>
         <div className="container">
             <h1 style={{margin:"20px 0"}}>Community Forum</h1>
             {
@@ -41,7 +45,6 @@ function Home({data,status,getSlotTime}) {
                     <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
                         <div style={{display:"flex", alignItems:"center"}}>
                             <h3 style={{marginRight:"20px"}}>{data.length} topics</h3>
-                            <AddTopic />
                             {/* <div tabIndex="0" style={{cursor:"pointer"}}>
                             <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M38 26H26V38H22V26H10V22H22V10H26V22H38V26Z" fill="black"/>
@@ -52,6 +55,7 @@ function Home({data,status,getSlotTime}) {
                             {
                                 topics.map((topic,i) => <div onClick={()=>setTag(i)} tabIndex="0" style={{cursor:"pointer"}}>{topic}</div>)
                             }
+                            <AddTopic />
                         </div>
                     </div>
                     <div>
@@ -79,6 +83,7 @@ function Home({data,status,getSlotTime}) {
                 ) 
             }
         </div>
+        </>
     )
 }
 

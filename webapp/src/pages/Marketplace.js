@@ -6,6 +6,7 @@ import SearchBar from "../components/SearchBar";
 import Rating from '@material-ui/lab/Rating';
 import {Link} from 'react-router-dom'
 import "../styles/Market.scss";
+import Navigation from '../components/Navigation';
 
 
 function Home({data,status,getFPO}) {
@@ -14,7 +15,7 @@ function Home({data,status,getFPO}) {
     const [fpoData,SetFpoData] = useState([]);
     function handleChange(newValue) {
         setValue(newValue);
-        SetRecords(fpoData.filter(item => item.name.includes(newValue)))
+        SetRecords(fpoData.filter(item => item.data.name.includes(newValue)))
     };
     useEffect(() => {
         console.log(getFPO());
@@ -28,6 +29,8 @@ function Home({data,status,getFPO}) {
         }
     },[data]);
     return (
+        <>
+            <Navigation/>
         <div className="container">
             <h1 style={{margin:"20px 0"}}>Market Place</h1>
             <SearchBar value={value} onChange={handleChange}/>
@@ -65,6 +68,7 @@ function Home({data,status,getFPO}) {
                     ) 
                 }
         </div>
+        </>
     )
 }
 
