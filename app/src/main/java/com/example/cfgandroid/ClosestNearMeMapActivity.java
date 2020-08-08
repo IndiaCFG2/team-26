@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
@@ -84,6 +85,8 @@ public class ClosestNearMeMapActivity extends FragmentActivity implements OnMapR
 
                 }
 
+
+
             }
         });
 
@@ -91,7 +94,7 @@ public class ClosestNearMeMapActivity extends FragmentActivity implements OnMapR
 
 
     }
-    void setMap(double val,double val2,GoogleMap googleMap)
+    void setMap(final double val, final double val2, GoogleMap googleMap)
     {
         HashMap<String,Object> map=new HashMap<>();
 //        db.collection("").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -99,11 +102,14 @@ public class ClosestNearMeMapActivity extends FragmentActivity implements OnMapR
 //            @Override
 //            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 //
-                LatLng sydney = new LatLng(-34, 151);
-                mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-//
+//                for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots) {
+//                    double lat=(double)queryDocumentSnapshot.get("latitude");
+//                    double longi=(double)queryDocumentSnapshot.get("longitude");
+//                    LatLng location = new LatLng(lat, longi);
+//                    mMap.addMarker(new MarkerOptions().position(location).title(String.valueOf(queryDocumentSnapshot.get("name"))));
+//                }
+//                LatLng currentLocation=new LatLng(val,val2);
+//                mMap.addMarker(new MarkerOptions().position(currentLocation).title(String.valueOf("My Location")));
 //            }
 //        }).addOnFailureListener(new OnFailureListener() {
 //            @Override
@@ -111,6 +117,12 @@ public class ClosestNearMeMapActivity extends FragmentActivity implements OnMapR
 //
 //            }
 //        });
+        LatLng currentLocation=new LatLng(val,val2);
+        mMap.addMarker(new MarkerOptions().position(currentLocation).title(String.valueOf("My Location")));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(val,val2), 12.0f));
+
+
     }
 
 }
