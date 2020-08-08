@@ -26,9 +26,7 @@ import IconButton from '@material-ui/core/IconButton';
      addUser = (e) => {
          e.preventDefault();
          const db=firebase.firestore();
-         db.settings({
-             timestampsInSnapshots:true
-         });
+
 
          var today= new Date();
 

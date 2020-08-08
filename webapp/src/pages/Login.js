@@ -1,48 +1,53 @@
-import React,{useState} from 'react';
+import React from 'react';
+import { firebase }from '../scripts/firebase';
+
 import { Button } from "@material-ui/core";
 import Logo from "../assets/logo.png";
-// import {UserLogin} from "../utils/api";
-import { useHistory,withRouter } from "react-router-dom";
+
+class User extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            email:"",
+            password:""
+        };
+    }
+
+    updateInput = (e) => {
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    }
+    addUser = (e) => {
+        e.preventDefault();
+        const db=firebase.firestore();
 
 
-function Login() {
-  const history=useHistory();
-  const [credential, setCredential] = useState({
-      email:"",
-      password:""
-  });
-  const [loading,setLoading]=useState(false);
-  const handleChange = (e) =>{
-      var field=e.target.id;
-      var val=e.target.value;
-      setCredential(prevState => ({
-        ...prevState,
-        [field]: val
-      }));
-  };
-  const handleSubmit = () =>{
-    //   setLoading(true);
-    //   UserLogin(credential)
-    //   .then(res => {
-    //     localStorage.setItem("Bank",res.user.displayName);
-    //     })
-    //   .then(()=>history.push('/'))
-    //   .catch(err=>console.log(err));
-  };
-  return (
-    <div>
-        <div style={{width:"500px", boxShadow: "2px 1px 12px rgba(0, 0, 0, 0.15)", padding:"50px", margin:"150px auto", borderRadius:"10px"}}>
-                <center>
-                    <img src={Logo} alt="Jan Dhan Logo"/>
-                </center>
-                <label>User ID</label>
-                <input type="email" id="email" onChange={handleChange} style={{width:"100%"}} placeholder="admin@bank.com"/>
-                <label>Password</label>
-                <input type="password" id="password" onChange={handleChange} style={{width:"100%"}} placeholder="password"/>
-                <Button variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>{loading ? "Signing in..":"Login"}</Button>
-        </div>
-    </div>
-  );
+        var email=this.state.email;
+        var password=this.state.password;
+
+        firebase.auth().signInWithEmailAndPassword(email,password).catch(function(error){
+            alert(error.message);
+        });
+
+    }
+    render(){
+        return (
+            <div>
+                <div style={{width:"500px", boxShadow: "2px 1px 12px rgba(0, 0, 0, 0.15)", padding:"50px", margin:"150px auto", borderRadius:"10px"}}>
+                        <center>
+                            <img src={Logo} alt="Jan Dhan Logo"/>
+                        </center>
+                        <label>User Email ID</label>
+                        <input type="email" id="email" name="email" value={this.state.email} onChange={this.updateInput} style={{width:"100%"}} placeholder="admin@bank.com"/>
+                        <label>Password</label>
+                        <input type="password" id="password" name="password" value={this.state.password} onChange={this.updateInput} style={{width:"100%"}} placeholder="password"/>
+
+                        <Button onClick={this.addUser} variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>LOGIN</Button>
+                </div>
+            </div>
+          );
+    }
 }
 
-export default withRouter(Login);
+export default User;

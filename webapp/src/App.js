@@ -10,6 +10,9 @@ import Footer from "./components/Footer"
 import Marketplace from "./pages/Marketplace"
 import Login from "./pages/Login"
 import FPODetail from "./pages/FPODetail"
+import RegisterFPO from "./pages/RegistrationFPO"
+import RegisterWholeseller from "./pages/RegistrationWholeseller"
+
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
             <Route exact path="/community" component={Community} />
             <Route exact path="/market" component={Marketplace} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/registerFPO" component={RegisterFPO} />
+            <Route exact path="/registerWholeseller" component={RegisterWholeseller} />
+
             <Route exact path="/details" component={FPODetail} />
           </Switch>
         </div>
