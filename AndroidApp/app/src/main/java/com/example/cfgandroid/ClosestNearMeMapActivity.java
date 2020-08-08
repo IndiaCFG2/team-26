@@ -97,26 +97,33 @@ public class ClosestNearMeMapActivity extends FragmentActivity implements OnMapR
     void setMap(final double val, final double val2, GoogleMap googleMap)
     {
         HashMap<String,Object> map=new HashMap<>();
-//        db.collection("").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//
-//                for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots) {
-//                    double lat=(double)queryDocumentSnapshot.get("latitude");
-//                    double longi=(double)queryDocumentSnapshot.get("longitude");
-//                    LatLng location = new LatLng(lat, longi);
-//                    mMap.addMarker(new MarkerOptions().position(location).title(String.valueOf(queryDocumentSnapshot.get("name"))));
-//                }
-//                LatLng currentLocation=new LatLng(val,val2);
-//                mMap.addMarker(new MarkerOptions().position(currentLocation).title(String.valueOf("My Location")));
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//
-//            }
-//        });
+        db.collection("fpo").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        double min=Double.MAX_VALUE;
+        String str="";
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots) {
+                    double lat=Double.parseDouble(String.valueOf(queryDocumentSnapshot.get("latitude")));
+                    double longi=Double.parseDouble(String.valueOf(queryDocumentSnapshot.get("longitude")));
+                    LatLng location = new LatLng(lat, longi);
+                    if(Math.abs(val-lat)+Math.abs(val2-longi)<min)
+                    {
+                        min=Math.abs(val-lat)+Math.abs(val2-longi);
+                        str=String.valueOf(queryDocumentSnapshot.get("name"));
+                    }
+                    mMap.addMarker(new MarkerOptions().position(location).title(String.valueOf(queryDocumentSnapshot.get("name"))));
+                }
+                LatLng currentLocation=new LatLng(val,val2);
+                mMap.addMarker(new MarkerOptions().position(currentLocation).title(String.valueOf("My Location")));
+                Toast.makeText(ClosestNearMeMapActivity.this,"The closest FPO near you is "+str,Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         LatLng currentLocation=new LatLng(val,val2);
         mMap.addMarker(new MarkerOptions().position(currentLocation).title(String.valueOf("My Location")));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
