@@ -7,11 +7,10 @@ export const getSlotTime = () => {
             type:SLOTS_REQUESTED
         });
         let data=[];
-        db.collection('products').doc('1pflD9HAZUFp5Aro5A1G').get().then(doc => {
-            if(doc.exists){
-                data=doc.data();
-                console.log(data);
-            }
+        db.collection('forum').get().then(querySnapShot => {
+            querySnapShot.forEach( doc =>{
+                data.push(doc.data());
+            })
         }).then(()=>{
             dispatch({type: SLOTS_RECEIVED, payload:data});
         })
