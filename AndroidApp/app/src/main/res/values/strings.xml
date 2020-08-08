@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CFGAndroid</string>
+    <string name="title_activity_closest_near_me_map">Map</string>
+</resources>
