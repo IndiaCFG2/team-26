@@ -9,7 +9,10 @@ export const getFPO = () => {
         let data=[];
         db.collection('fpo').get().then(querySnapShot => {
             querySnapShot.forEach( doc =>{
-                data.push(doc.data());
+                data.push({
+                    name:doc.id,
+                    data:doc.data()
+                });
             })
         }).then(()=>{
             dispatch({type: SLOTS_RECEIVED, payload:data});
