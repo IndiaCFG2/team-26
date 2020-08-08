@@ -7,8 +7,8 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Community from './pages/Community';
 import Footer from "./components/Footer"
-
-
+import Marketplace from "./pages/Marketplace"
+import Login from "./pages/Login"
 
 function App() {
   return (
@@ -20,6 +20,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/community" component={Community} />
+            <Route exact path="/market" component={Marketplace} />
+            <Route exact path="/login" component={Login} />
           </Switch>
         </div>
         <Footer/>
