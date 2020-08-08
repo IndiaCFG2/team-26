@@ -2,27 +2,57 @@ import React,{useEffect,useState} from 'react'
 import {connect} from 'react-redux';
 import {getSlotTime} from "../redux/actions/slotTimeAction"
 import "../styles/Community.scss";
+import AddTopic from "../components/addTopic"
 
 function Home({data,status,getSlotTime}) {
     const [tag,setTag]=useState(0);
+    const [topics,setTopics]=useState([]);
+    const [newTopic, setNewTopic]=useState("");
     const [posts,setPosts]=useState([]);
     useEffect(()=>{
         getSlotTime();
-        console.log(data);
     });
     useEffect(() => {
         setPosts(data[tag]);
-    }, [tag,data])
+    }, [tag,data]);
+    useEffect(()=>{
+        var arr=[];
+        data.map(d=>{
+            arr.push(d['name'])
+        });
+        if(arr!==topics) setTopics(arr);
+    },[data]);
+    useEffect(()=>{
+        // console.log(topics);
+    },[topics]);
+    const handleSubmit = (val) =>{
+        var arr=topics;
+        arr.push(val);
+        console.log(arr,val);
+        // setTopics(arr);  
+        setTopics(prevState=> [...prevState, val]);  
+    };
     return (
         <div className="container">
             <h1 style={{margin:"20px 0"}}>Community Forum</h1>
             {
                 data.length===0 ? <div>Loading</div> :
                 (   <>
-                    <div className="tags">
-                        {
-                            data.map((topic,i) => <div onClick={()=>setTag(i)} tabIndex="0" style={{cursor:"pointer"}}>{topic['name']}</div>)
-                        }
+                    <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                        <div style={{display:"flex", alignItems:"center"}}>
+                            <h3 style={{marginRight:"20px"}}>{data.length} topics</h3>
+                            <AddTopic onChange={handleSubmit}/>
+                            {/* <div tabIndex="0" style={{cursor:"pointer"}}>
+                            <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M38 26H26V38H22V26H10V22H22V10H26V22H38V26Z" fill="black"/>
+                            </svg>
+                            </div> */}
+                        </div>
+                        <div className="tags">
+                            {
+                                topics.map((topic,i) => <div onClick={()=>setTag(i)} tabIndex="0" style={{cursor:"pointer"}}>{topic}</div>)
+                            }
+                        </div>
                     </div>
                     <div>
                         {posts && posts['posts'].map(p=>

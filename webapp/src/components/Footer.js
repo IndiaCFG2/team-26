@@ -15,7 +15,7 @@ export default function Footer() {
         <div style={style}>
             <div>For Sales Enquiry</div>
             <div>Contact: +1-484-753-392</div>
-            <a href="mailto:contact@companionast.com">contact@companionast.com</a>
+            <a href="mailto:contact@fpoconnect.com">contact@fpoconnect.com</a>
         </div>
     )
 }
