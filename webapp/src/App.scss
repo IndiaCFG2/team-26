@@ -1,0 +1,36 @@
+@import './styles/tokens.scss';
+
+*,*:before,*:after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+.main{
+  height:100%;
+}
+.container{
+  padding: 0% 10% 0;
+}
+
+.alert{
+  background-color: #F79595;
+  border-radius: 5px;
+  padding: 1em;
+  // display: flex;
+  // align-items: center;
+  color: $color-white;
+  font-weight: 600;
+}
+
+@media only screen and (max-width:900px){
+  .container{
+    padding: 0% 5% 0;
+  }
+}
+
+@media only screen and (max-width:700px){
+  .container{
+    padding: 0% 10px 0;
+  }
+}
