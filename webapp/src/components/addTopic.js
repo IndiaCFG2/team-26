@@ -29,17 +29,50 @@ import IconButton from '@material-ui/core/IconButton';
 
 
          var today= new Date();
-
-         const userRef= db.collection("forum").add({
-            name:this.state.name,
-            posts:[{
+            var tag=this.state.name;
+            // var posts=db.collection("forum").where("name","==","tag");
+            // console.log(posts);
+            // db.collection("forum").where("name","==",tag).get().then(function(querySnap){
+            //     querySnap.forEach(function(doc){
+            //         console.log(doc);
+            //     })
+            //     .catch(function(error){
+            //         console.log("error");
+            //     })
+            // });
+            var post={
                 content:this.state.content,
                 author:this.state.author,
                 url:this.state.url,
             
                 date:today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()
-            }]
-         });
+        
+            }
+            db.collection("forum").where("name", "==", tag)
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    //console.log(doc.id, " => ", doc.data());
+                    var data1=doc.data();
+                    data1.posts.push(post);
+                    firebase.firestore().collection("forum").doc(doc.id).update(data1);
+                });
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
+            
+
+        //  const userRef= db.collection("forum").add({
+        //     posts:[{
+        //         content:this.state.content,
+        //         author:this.state.author,
+        //         url:this.state.url,
+            
+        //         date:today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()
+        //     }]
+        //  });
          this.setState({
              name:"",
              content:"",
@@ -68,13 +101,24 @@ import IconButton from '@material-ui/core/IconButton';
                                 </IconButton>
                             </div>
                         <div className="content" style={{padding:"20px"}}>
-                            <input placeholder="Title" id="name"  name ="name" onChange={this.updateInput} value={this.state.name}/><br/>
+                            <select id="name"  name ="name" onChange={this.updateInput} >
+                                <option value="Government Policies">Government Policies </option>
+                                <option value="Economy">Economy</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="Weather">Weather</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Market">Market</option>
+ 
+
+                            </select>
+         
+                        <br/>
                         </div>
                         <div className="content" style={{padding:"20px"}}>
                             <textarea rows="5" cols="75" placeholder="Content" id="content"  name ="content" onChange={this.updateInput} value={this.state.content}/><br/>
                         </div>
                         <div className="content" style={{padding:"20px"}}>
-                            <input placeholder="Author Name" id="name"  name ="author" onChange={this.updateInput} value={this.state.author}/><br/>
+                            <input placeholder="Author Name" id="name1"  name ="author" onChange={this.updateInput} value={this.state.author}/><br/>
                         </div>
                         <div className="content" style={{padding:"20px"}}>
                             <input placeholder="URL Link" id="name"  name ="url" onChange={this.updateInput} value={this.state.url}/><br/>
