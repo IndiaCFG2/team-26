@@ -9,3 +9,36 @@
 .fpodesc{
     color:#000;
 }
+
+.tab{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin-bottom: 50px;
+    .tab-ele{
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        color: #3B97A4;
+        padding-top: 10px;
+        // background-color: #e7e7e7;
+        cursor: pointer;
+        border: solid #3B97A4;
+        border-width: 0 0 2px 0;
+    }
+    .active{
+        border: solid #3B97A4;
+        border-width: 2px 2px 0 2px;
+        // text-decoration: underline;
+        background-color: #eee;
+    }
+}
+
+.section{
+    display: none;
+}
+
+.active-tab{
+    display: block;
+}

@@ -19,9 +19,9 @@ function App() {
         {/* <Navigation/> */}
         <div className="main">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Marketplace} />
             <Route exact path="/community" component={Community} />
-            <Route exact path="/market" component={Marketplace} />
+            {/* <Route exact path="/" component={Marketplace} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/details/:id" component={FPODetail} />
           </Switch>
