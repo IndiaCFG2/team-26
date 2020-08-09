@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import Logo from "../assets/logo.png";
 // import {UserLogin} from "../utils/api";
 import { useHistory,withRouter } from "react-router-dom";
-
+import {Link} from 'react-router-dom'
 
 function Login() {
   const history=useHistory();
@@ -40,6 +40,7 @@ function Login() {
                 <label>Password</label>
                 <input type="password" id="password" onChange={handleChange} style={{width:"100%"}} placeholder="password"/>
                 <Button variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>{loading ? "Signing in..":"Login"}</Button>
+                <p style={{marginTop:"20px"}}>{"Not registered ?  "}<Link to="/register/fpo">Sign up</Link></p>
         </div>
     </div>
   );
