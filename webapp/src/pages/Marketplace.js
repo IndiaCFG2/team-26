@@ -62,7 +62,7 @@ function Home({data,status,getFPO}) {
                         <h3>Vegetables</h3>
                     </div>
                     <div style={{width:"300px",textAlign:"center", boxShadow: "0px 1px 10px #999", borderRadius:"10px", padding:"20px"}}>
-                        <img style={{height:"200px", width:"200px"}} src="https://static01.nyt.com/images/2020/03/17/well/askwell-wholegrains/askwell-wholegrains-mediumSquareAt3X.jpg"/>
+                        <img style={{height:"200px", width:"200px"}} src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/assortment-of-colorful-ripe-tropical-fruits-top-royalty-free-image-995518546-1564092355.jpg?crop=0.657xw:0.983xh;0.191xw,0&resize=640:*"/>
                         <h3>Fruits</h3>
                     </div>
                 </div>

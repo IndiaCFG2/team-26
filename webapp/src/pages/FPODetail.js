@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 import "../styles/Market.scss";
 import { Button } from "@material-ui/core";
 import Navigation from '../components/Navigation';
-
+import Feedback from "../components/feedback"
 
 function Home({data,status,getFPO}) {
     const [value, setValue] = useState([]);
@@ -41,7 +41,10 @@ function Home({data,status,getFPO}) {
             {
                 value[0] && 
                 <>
-                            <h1 style={{margin:"20px 0"}}>{value[0] && value[0].data.name}</h1>
+                    <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+                        <h1 style={{margin:"20px 0"}}>{value[0] && value[0].data.name}</h1>
+                        <Feedback/>
+                    </div>
                     <div style={{display:"flex", alignItems:"center", marginBottom:"10px"}}>
                         <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24 4C16.27 4 10 10.27 10 18C10 28.5 24 44 24 44C24 44 38 28.5 38 18C38 10.27 31.73 4 24 4ZM24 23C21.24 23 19 20.76 19 18C19 15.24 21.24 13 24 13C26.76 13 29 15.24 29 18C29 20.76 26.76 23 24 23Z" fill="#3B97A4"/>
