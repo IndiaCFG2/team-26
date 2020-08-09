@@ -63,23 +63,23 @@ class User extends React.Component{
                         </center>
                         
                         <label>Name</label>
-                        <input type="text"  id="name" name ="name" onChange={this.updateInput} value={this.state.name}  style={{width:"100%"}} placeholder="XYZ"/>
+                        <input type="text"  id="name" name ="name" value={this.state.name}  style={{width:"100%"}} placeholder="XYZ"/>
                         
                        
                         <label>Contact</label>
-                        <input type="text"  id="contact" name ="contact" onChange={this.updateInput} value={this.state.contact}  style={{width:"100%"}} placeholder="9020342332"/>
+                        <input type="text"  id="contact" name ="contact" value={this.state.contact}  style={{width:"100%"}} placeholder="9020342332"/>
                         
                         <label>Email</label>
-                        <input type="email"  id="email" name ="email" onChange={this.updateInput} value={this.state.email}  style={{width:"100%"}} placeholder="abc@xyz.com"/>
+                        <input type="email"  id="email" name ="email" value={this.state.email}  style={{width:"100%"}} placeholder="abc@xyz.com"/>
                       
                         <label>Registration No</label>
-                        <input type="text"  id="registration" name ="registration" onChange={this.updateInput} value={this.state.registration}  style={{width:"100%"}} placeholder="1234"/>
+                        <input type="text"  id="registration" name ="registration" value={this.state.registration}  style={{width:"100%"}} placeholder="1234"/>
 
                         
                         <label>Password</label>
-                        <input type="password" id="password"  name="password" style={{width:"100%"}} onChange={this.updateInput} value={this.state.password} placeholder="password" />
+                        <input type="password" id="password"  name="password" style={{width:"100%"}} value={this.state.password} placeholder="password" />
 
-                        <Button onClick={this.addUser} variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>Register</Button>
+                        <Link to="/"><Button onClick={this.addUser} variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>Register</Button></Link>
                 </div>
             </div>
           );

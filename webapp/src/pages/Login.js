@@ -39,7 +39,7 @@ function Login() {
                 <input type="email" id="email" onChange={handleChange} style={{width:"100%"}} placeholder="admin@bank.com"/>
                 <label>Password</label>
                 <input type="password" id="password" onChange={handleChange} style={{width:"100%"}} placeholder="password"/>
-                <Button variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>{loading ? "Signing in..":"Login"}</Button>
+                <Link to="/"><Button variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>{loading ? "Signing in..":"Login"}</Button></Link>
                 <p style={{marginTop:"20px"}}>{"Not registered ?  "}<Link to="/register/fpo">Sign up</Link></p>
         </div>
     </div>

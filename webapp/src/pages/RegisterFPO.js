@@ -92,7 +92,7 @@ class User extends React.Component{
                         <label>Password</label>
                         <input type="password" id="password"  name="password" style={{width:"100%"}} onChange={this.updateInput} value={this.state.password} placeholder="password" />
 
-                        <Button onClick={this.addUser} variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>Register</Button>
+                        <Link to="/"><Button onClick={this.addUser} variant="contained" color="primary" style={{backgroundColor:'#3265D5',width:'100%'}}>Register</Button></Link>
                 </div>
             </div>
           );
